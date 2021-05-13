@@ -71,9 +71,6 @@ const sendErrorProd = (err, req, res) => {
 
   // handle operational, rendered website error
   if (err.isOperational) {
-    // eslint-disable-next-line no-console
-    console.log(err);
-
     return res.status(err.statusCode).render('error', {
       title: 'Something went wrong!',
       msg: err.message
