@@ -50,3 +50,12 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
   });
 });
+
+process.on('SIGTERM', () => {
+  // eslint-disable-next-line no-console
+  console.log('👏 SIGERM RECEIVED. Shutting down gracefully');
+  server.close(() => {
+    // eslint-disable-next-line no-console
+    console.log('💥 Process terminated!');
+  });
+});
